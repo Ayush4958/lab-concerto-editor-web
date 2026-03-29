@@ -8,32 +8,35 @@ import { MAX_PROPERTIES } from '../diagramUtil';
 
 export default function EnumNode({ data }: { data: EnumNodeData }) {
     const declaration = data.declaration;
+    const headerColor = colors[declaration.$class] || '#9D00FF';
+
     return (
         <>
             <Handle type='target' position={Position.Bottom} />
             <Handle type='source' position={Position.Top} />
-            <div className='Node'>
-                <div className='header' style={{ backgroundColor: colors[declaration.$class] }}>
+            <div className='Node' style={{ borderColor: `${headerColor}22` }}>
+                <div className='header' style={{ background: `linear-gradient(135deg, ${headerColor}18, ${headerColor}08)` }}>
                     <div className='DeclarationName'>{declaration.name}</div>
                     <div className='DeclarationType'>
                         {getClassDescription(declaration)}
                     </div>
+                    <div style={{
+                        position: 'absolute', top: 0, left: 0, right: 0,
+                        height: '2px', background: headerColor, opacity: 0.7
+                    }} />
                 </div>
-                <div>
-                    <table className='properties'>
-                        <tbody>
-                            {declaration.properties.slice(0,MAX_PROPERTIES).map(prop => (
-                                <tr key={prop.name}>
-                                    <td key={prop.name}>{prop.name}</td>
-                                    <td key={`${prop.name}-edit`}></td>
-                                </tr>
-                            ))}
-                            {declaration.properties.length > MAX_PROPERTIES ? <tr><td>...</td></tr> : <></> }
-                        </tbody>
-                    </table>
+                <div className='node-properties'>
+                    {declaration.properties.slice(0, MAX_PROPERTIES).map(prop => (
+                        <div className='enum-value-row' key={prop.name}>
+                            <span className='enum-dot' style={{ background: headerColor }} />
+                            <span className='enum-value-name'>{prop.name}</span>
+                        </div>
+                    ))}
+                    {declaration.properties.length > MAX_PROPERTIES && (
+                        <div className='overflow-row'>···</div>
+                    )}
                 </div>
-                <div className='footer'>
-                </div>
+                <div className='footer' />
             </div>
         </>
     );

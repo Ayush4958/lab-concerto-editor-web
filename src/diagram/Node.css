@@ -1,29 +1,195 @@
+/* ===== BASE NODE SHELL ===== */
 .Node {
-  border-width: 2px;
-  min-width: 250px;
-  border-color: black;
-  border-style: solid;
-  border-radius: 0px;
-  background-color: white;
-  padding: 0px;
+  min-width: 260px;
   width: fit-content;
+  background: rgba(12, 12, 18, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  padding: 0;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
-.controls {
+.Node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.Node>.header {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: left;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
 }
 
-.Node > .header {
+.Node>.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: inherit;
+  opacity: 0.9;
+}
+
+.DeclarationName {
+  color: #FFFFFF;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.DeclarationType {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'JetBrains Mono', monospace;
+  font-style: italic;
+  font-size: 0.65rem;
+  text-align: left;
+  letter-spacing: 0.3px;
+}
+
+
+.node-properties {
+  padding: 6px 0;
+}
+
+.property-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 14px;
+  gap: 12px;
+  transition: background 0.1s ease;
+}
+
+.property-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.property-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.property-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.type-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 1px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid currentColor;
+  opacity: 0.85;
+}
+
+.modifier-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  color: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  text-transform: lowercase;
+  letter-spacing: 0.2px;
+}
+
+.overflow-row {
+  padding: 2px 14px 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 2px;
+}
+
+.enum-value-row {
+  display: flex;
+  align-items: center;
+  padding: 3px 14px;
+  gap: 8px;
+  transition: background 0.1s ease;
+}
+
+.enum-value-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.enum-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.enum-value-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.Node>.footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   justify-items: center;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.Node.is-abstract {
+  opacity: 0.7;
+}
+
+.Node.is-abstract .DeclarationName {
+  font-style: italic;
+}
+
+.abstract-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0px 4px;
+  border-radius: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background: #1a1a1a !important;
+  border: 2px solid #555 !important;
+  border-radius: 0 !important;
+  transition: all 0.15s ease;
+}
+
+.react-flow__handle:hover {
+  border-color: #00F0FF !important;
+  background: #00F0FF !important;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6) !important;
 }
 
 .properties {
@@ -31,23 +197,20 @@
   padding-right: 10px;
 }
 
-.Node > .footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  justify-items: center;
-  padding-bottom: 2px;
+.properties td {
+  padding: 2px 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.DeclarationType {
-  color: black;
+.type {
+  color: #00F0FF;
+  font-style: normal;
+}
+
+.modifiers {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.65rem;
   font-style: italic;
-  font-size: small;
-  text-align: right;
-}
-
-.DeclarationName {
-  color: black;
-  font-weight: bolder;
-  text-align: center;
 }

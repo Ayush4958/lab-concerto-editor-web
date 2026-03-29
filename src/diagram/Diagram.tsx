@@ -31,10 +31,20 @@ function Diagram() {
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
+        style={{ background: '#060609' }}
       >
-        <MiniMap />
+        <MiniMap
+          nodeColor={() => '#1a1a2e'}
+          nodeStrokeColor={() => '#333'}
+          maskColor='rgba(0, 0, 0, 0.7)'
+        />
         <Controls />
-        <Background variant={BackgroundVariant.Lines} />
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={20}
+          size={0.8}
+          color='rgba(255, 255, 255, 0.04)'
+        />
       </ReactFlow>
     </div>
   );

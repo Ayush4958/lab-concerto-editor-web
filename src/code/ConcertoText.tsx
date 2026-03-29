@@ -37,19 +37,20 @@ function ConcertoText() {
 
     // Define a new theme that contains only rules that match this language
     monaco.editor.defineTheme('concertoTheme', {
-      base: 'vs',
-      inherit: false,
+      base: 'vs-dark',
+      inherit: true,
       rules: [
-        { token: 'concept-token', foreground: '0000ff', fontStyle: 'bold' },
-        { token: 'enum-token', foreground: 'ff0000', fontStyle: 'bold' },
+        { token: 'concept-token', foreground: '00F0FF', fontStyle: 'bold' },
+        { token: 'enum-token', foreground: '9D00FF', fontStyle: 'bold' },
         { token: 'diagram-token', foreground: 'aaaaaa' },
-        { token: 'primitive-token', foreground: '000000', fontStyle: 'bold' },
-        { token: 'relationship-token', foreground: '11ffdd', fontStyle: 'bold' },
-        { token: 'optional-token', foreground: '000000', fontStyle: 'italic' },
-        { token: 'namespace-token', foreground: 'ff00ff', fontStyle: 'bold' },
+        { token: 'primitive-token', foreground: '39FF14', fontStyle: 'bold' },
+        { token: 'relationship-token', foreground: 'FFAA00', fontStyle: 'bold' },
+        { token: 'optional-token', foreground: '888888', fontStyle: 'italic' },
+        { token: 'namespace-token', foreground: 'FF0055', fontStyle: 'bold' },
       ],
       colors: {
-        'editor.foreground': '#000000',
+        'editor.background': '#0A0A0A',
+        'editor.foreground': '#FFFFFF',
       },
     });
   }

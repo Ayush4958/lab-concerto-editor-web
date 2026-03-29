@@ -3,43 +3,69 @@
   display: flex;
   width: 100%;
   min-height: 500px;
-  height: 70vh;
+  height: calc(100vh - 120px);
   overflow: hidden;
-  padding: 20px;
+  padding: 0;
+  background-color: #060609;
 }
 
-.diagram aside {
-  border-right: 1px solid #eee;
-  padding: 15px 10px;
-  font-size: 12px;
-  background: #fcfcfc;
+.react-flow__background {
+  background-color: #060609 !important;
 }
 
-.diagram aside > * {
-  margin-bottom: 10px;
-  cursor: grab;
+.react-flow__minimap {
+  background-color: rgba(10, 10, 10, 0.9) !important;
+  border: 1px solid #222 !important;
+  border-radius: 0 !important;
 }
 
-.diagram aside .description {
-  margin-bottom: 10px;
+.react-flow__controls {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-.diagram .reactflow-wrapper {
-  flex-grow: 1;
+.react-flow__controls-button {
+  background: rgba(20, 20, 25, 0.9) !important;
+  border: 1px solid #333 !important;
+  border-radius: 0 !important;
+  color: #ccc !important;
+  fill: #ccc !important;
+  transition: all 0.15s ease;
 }
 
-.message {
-  font-size: 20px;
-  background: pink;
+.react-flow__controls-button:hover {
+  background: rgba(0, 240, 255, 0.1) !important;
+  border-color: #00F0FF !important;
+  fill: #00F0FF !important;
+}
+
+.react-flow__controls-button svg {
+  fill: inherit !important;
+}
+
+.react-flow__edge-path {
+  stroke: #555 !important;
+  stroke-width: 1.5 !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #00F0FF !important;
+  filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.5));
+}
+
+.react-flow__connection-path {
+  stroke: #00F0FF !important;
+  stroke-dasharray: 5 5;
+}
+
+.react-flow__attribution {
+  display: none !important;
 }
 
 @media screen and (min-width: 768px) {
   .diagram {
     flex-direction: row;
-  }
-
-  .diagram aside {
-    width: 20%;
-    max-width: 180px;
   }
 }

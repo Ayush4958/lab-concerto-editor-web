@@ -30,7 +30,7 @@ function FloatingEdge({ id, source, target, markerEnd, style, label, data }:Edge
     targetY: ty,
   });
 
-  const fill = data.type === 'property' ? 'purple' : 'green';
+  const fill = data.type === 'property' ? 'rgba(157, 0, 255, 0.7)' : 'rgba(57, 255, 20, 0.5)';
 
   return (
     <g className="react-flow__connection">
@@ -39,11 +39,11 @@ function FloatingEdge({ id, source, target, markerEnd, style, label, data }:Edge
         x={centerX}
         y={centerY}
         label={label}
-        labelStyle={{ fill: 'white', fontSize: 'large' }}
+        labelStyle={{ fill: '#ffffff', fontSize: '11px', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.3px' }}
         labelShowBg
         labelBgStyle={{ fill }}
-        labelBgPadding={[2, 4]}
-        labelBgBorderRadius={2}
+        labelBgPadding={[3, 6]}
+        labelBgBorderRadius={1}
       />
     </g>
   );
